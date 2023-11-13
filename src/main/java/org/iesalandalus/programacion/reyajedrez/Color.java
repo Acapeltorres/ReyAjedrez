@@ -9,4 +9,9 @@ public enum Color {
 
         this.CadenaMostrar=CadenaMostrar;
     }
+
+    @Override
+    public String toString() {
+        return CadenaMostrar;
+    }
 }
