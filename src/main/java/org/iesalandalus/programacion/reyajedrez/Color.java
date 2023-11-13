@@ -4,4 +4,9 @@ public enum Color {
     BLANCO(Blanco), NEGRO(Negro);
 
     private String CadenaMostrar;
+
+    private Color (String CadenaMostrar){
+
+        this.CadenaMostrar=CadenaMostrar;
+    }
 }
