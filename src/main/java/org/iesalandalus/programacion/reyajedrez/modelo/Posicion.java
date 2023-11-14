@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reyajedrez;
+package org.iesalandalus.programacion.reyajedrez.modelo;
 
 public class Posicion {
     //Atributos
@@ -12,6 +12,13 @@ public class Posicion {
         setFila(fila);
         setColumna(columna);
 
+    }
+
+    //Construtor copia
+    public Posicion(Posicion p){
+
+        setFila(p.getFila());
+        setColumna(p.getColumna());
     }
 
     // getters y setters
