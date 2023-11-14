@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reyajedrez;
+package org.iesalandalus.programacion.reyajedrez.modelo;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class Posicion {
         return fila;
     }
 
-    public void setFila(int fila) {
+    private void setFila(int fila) {
         if (fila<1 || fila>8){
             throw new IllegalArgumentException("ERROR: Fila no valida (inserte fila entre la '1' y la '8')");
         }else{
@@ -42,7 +42,7 @@ public class Posicion {
         return columna;
     }
 
-    public void setColumna(char columna) {
+    private void setColumna(char columna) {
         if(columna< 'a' || columna> 'h'){
             throw new IllegalArgumentException("ERROR: columna no valida (inserte columna entre la 'a' y la 'h')");
         }else{
