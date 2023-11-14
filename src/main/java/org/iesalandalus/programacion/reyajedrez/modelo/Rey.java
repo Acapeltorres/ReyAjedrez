@@ -8,6 +8,14 @@ public class Rey {
     private Posicion posicion;
     private int totalMovimientos;
 
+
+    //Constructor por defecto
+
+    public Rey(){
+        setColor(Color.BLANCO);
+        setPosicion(new Posicion(1,'e'));
+    }
+
     //getters y setters
 
     public Color getColor() {
