@@ -65,4 +65,15 @@ public class Posicion {
     public int hashCode() {
         return Objects.hash(fila, columna);
     }
+
+    // Metodo toString
+
+
+    @Override
+    public String toString() {
+        return "Posicion{" +
+                "fila=" + fila +
+                "columna=" + columna +
+                '}';
+    }
 }
