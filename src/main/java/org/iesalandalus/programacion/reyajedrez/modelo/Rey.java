@@ -16,6 +16,16 @@ public class Rey {
         setPosicion(new Posicion(1,'e'));
     }
 
+    //Constructor
+    public Rey(Color color){
+        if(color==Color.BLANCO){
+            setPosicion(new Posicion(1,'e'));
+        }else{
+            setPosicion(new Posicion(8,'e'));
+        }
+
+    }
+
     //getters y setters
 
     public Color getColor() {
