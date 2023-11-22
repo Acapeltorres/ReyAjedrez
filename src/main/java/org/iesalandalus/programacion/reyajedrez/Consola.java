@@ -35,7 +35,7 @@ public class Consola {
         return opcionMenu;
     }
 
-    public static int elegirOpcion(){
+    public static int elegirColor(){
         int opcionColor=0;
 
         do {
@@ -50,5 +50,33 @@ public class Consola {
         }while (opcionColor>=1 || opcionColor<=2);
 
         return opcionColor;
+    }
+
+    public static void mostrarMenuDirecciones(){
+
+        System.out.println("Elige la direccion el la que quieres mover tu Rey:" +
+                "\n 1. Norte" +
+                "\n 2. Noreste" +
+                "\n 3. Este" +
+                "\n 4. Sur" +
+                "\n 5. Suroeste" +
+                "\n 6. Oeste" +
+                "\n 7. Noroeste" +
+                "\n 8. Enroque Corto" +
+                "\n 9. Enroque Largo");
+    }
+
+    public static int elegirDireccion(){
+        int opcionDireccion=0;
+
+        do {
+            mostrarMenuDirecciones();
+            if (opcionDireccion<1 || opcionDireccion>9){
+                opcionDireccion=Entrada.entero();
+            }else {
+                System.out.println("Introduce correctamente una direccion valida entre 1 y 9");
+            }
+        }while (opcionDireccion<1 || opcionDireccion>9);
+        return opcionDireccion;
     }
 }
