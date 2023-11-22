@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.reyajedrez;
 
+import org.iesalandalus.programacion.reyajedrez.modelo.Color;
+import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 import java.sql.SQLOutput;
@@ -35,26 +37,28 @@ public class Consola {
         return opcionMenu;
     }
 
-    public static int elegirColor(){
+    public static Color elegirColor(){
         int opcionColor=0;
 
         do {
             System.out.println("Elige el color del Rey: " +
                     "\n 1.Blanco" +
                     "\n 2.Negro");
-            if (opcionColor>=1 || opcionColor<=2){
-                opcionColor=Entrada.entero();
-            }else {
-                System.out.println("Elige un color disponible (Blanco o Negro)");
-            }
+            opcionColor=Entrada.entero();
+
         }while (opcionColor>=1 || opcionColor<=2);
 
-        return opcionColor;
+        if (opcionColor==1){
+            return Color.BLANCO;
+        }else {
+            return Color.NEGRO;
+        }
+
     }
 
     public static void mostrarMenuDirecciones(){
 
-        System.out.println("Elige la direccion el la que quieres mover tu Rey:" +
+        System.out.println("Introduzca por teclado la opcion que quieres mover tu Rey:" +
                 "\n 1. Norte" +
                 "\n 2. Noreste" +
                 "\n 3. Este" +
@@ -66,17 +70,38 @@ public class Consola {
                 "\n 9. Enroque Largo");
     }
 
-    public static int elegirDireccion(){
+    public static Direccion elegirDireccion(){
         int opcionDireccion=0;
 
         do {
             mostrarMenuDirecciones();
-            if (opcionDireccion<1 || opcionDireccion>9){
-                opcionDireccion=Entrada.entero();
-            }else {
-                System.out.println("Introduce correctamente una direccion valida entre 1 y 9");
-            }
+            opcionDireccion=Entrada.entero();
+
         }while (opcionDireccion<1 || opcionDireccion>9);
-        return opcionDireccion;
+
+        if (opcionDireccion==1){
+            return Direccion.NORTE;
+        } else if (opcionDireccion==2) {
+            return Direccion.NORESTE;
+        } else if (opcionDireccion==3) {
+            return Direccion.ESTE;
+        } else if (opcionDireccion==4) {
+            return Direccion.SUR;
+        } else if (opcionDireccion==5) {
+            return Direccion.SUROESTE;
+        } else if (opcionDireccion==6) {
+            return Direccion.OESTE;
+        } else if (opcionDireccion==7) {
+            return Direccion.NOROESTE;
+        } else if (opcionDireccion==8) {
+            return Direccion.ENROQUE_CORTO;
+        }else {
+            return Direccion.ENROQUE_LARGO;
+        }
+    }
+
+    public static void despedirse(){
+
+        System.out.println("Gracias por utilizar nuestra aplicación hasta pronto.");
     }
 }
