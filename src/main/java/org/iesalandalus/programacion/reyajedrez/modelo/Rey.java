@@ -19,11 +19,13 @@ public class Rey {
     }
 
     //Constructor
-    public Rey(Color color){
-        if(color==Color.BLANCO){
-            setPosicion(new Posicion(1,'e'));
-        }else{
+    public Rey(Color color) {
+        setColor(color);
+
+        if(color==Color.NEGRO){
             setPosicion(new Posicion(8,'e'));
+        }else{
+            setPosicion(new Posicion(1,'e'));
         }
 
     }
@@ -36,7 +38,7 @@ public class Rey {
 
     private void setColor(Color color) {
         if(color==null){
-            throw new NullPointerException("ERROR: Color incorrecto");
+            throw new NullPointerException("ERROR: El color no puede ser nulo.");
         }else{
             this.color = color;
         }
@@ -70,24 +72,24 @@ public class Rey {
 
     }
 
-    public void mover(Direccion d) throws OperationNotSupportedException,IllegalArgumentException{
-        int totalMovimientos=0;
+    public void mover(Direccion d) throws OperationNotSupportedException{
+
         if(d==null){
-            throw new NullPointerException("ERROR: direcion incorrecta");
+            throw new NullPointerException("ERROR: La dirección no puede ser nula.");
         }
         if(d.equals(Direccion.SUR)){
             try{
                 setPosicion(new Posicion(posicion.getFila()-1,posicion.getColumna()));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.NORTE)) {
             try {
                 setPosicion(new Posicion(posicion.getFila()+1,posicion.getColumna()));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.ESTE)) {
             try {
@@ -95,7 +97,7 @@ public class Rey {
                 setPosicion(new Posicion(posicion.getFila(),(char)numerocolumna));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.OESTE)) {
             try {
@@ -103,7 +105,7 @@ public class Rey {
                 setPosicion(new Posicion(posicion.getFila(),(char)numerocolumna));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.NORESTE)) {
             try {
@@ -111,7 +113,7 @@ public class Rey {
                 setPosicion(new Posicion(posicion.getFila()+1,(char)numerocolumna));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.NOROESTE)) {
             try {
@@ -119,7 +121,7 @@ public class Rey {
                 setPosicion(new Posicion(posicion.getFila()+1,(char)numerocolumna));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.SURESTE)) {
             try {
@@ -127,7 +129,7 @@ public class Rey {
                 setPosicion(new Posicion(posicion.getFila()-1,(char)numerocolumna));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.SUROESTE)) {
             try {
@@ -135,30 +137,39 @@ public class Rey {
                 setPosicion(new Posicion(posicion.getFila()-1,(char)numerocolumna));
                 totalMovimientos++;
             }catch (IllegalArgumentException e) {
-                throw new OperationNotSupportedException("ERROR");
+                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.ENROQUE_CORTO)) {
             if(totalMovimientos>0){
-                throw new IllegalArgumentException("ERROR no es posible hacer enroque Rey tiene movimientos");
+                throw new OperationNotSupportedException("El rey ya se ha movido antes.");
             }else{
                 int numerocolumna= posicion.getColumna()+2;
                 setPosicion(new Posicion(posicion.getFila(), (char)numerocolumna));
             }
         } else if (d.equals(Direccion.ENROQUE_LARGO)) {
-            if(totalMovimientos>0){
-                throw new IllegalArgumentException("ERROR no es posible hacer enroque Rey tiene movimientos");
-            }else {
+            Posicion blanco=new Posicion(1,'e');
+            if(totalMovimientos>0 ){
+                throw new OperationNotSupportedException("ERROR: El rey ya se ha movido antes.");
+            } else if (!this.posicion.equals(blanco)) {
+                throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+            } else {
                 int numerocolumna= posicion.getColumna()-2;
                 setPosicion(new Posicion(posicion.getFila(), (char)numerocolumna));
+
+
             }
         }
     }
 
+
+
+
+
     @Override
     public String toString() {
-        return "Rey{" +
+        return
                 "color=" + color +
-                ", posicion=" + posicion +
-                '}';
+                ", posicion=" + "("+ posicion +
+                ')';
     }
 }
