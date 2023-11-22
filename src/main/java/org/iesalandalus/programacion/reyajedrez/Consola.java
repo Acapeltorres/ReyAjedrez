@@ -34,4 +34,21 @@ public class Consola {
 
         return opcionMenu;
     }
+
+    public static int elegirOpcion(){
+        int opcionColor=0;
+
+        do {
+            System.out.println("Elige el color del Rey: " +
+                    "\n 1.Blanco" +
+                    "\n 2.Negro");
+            if (opcionColor>=1 || opcionColor<=2){
+                opcionColor=Entrada.entero();
+            }else {
+                System.out.println("Elige un color disponible (Blanco o Negro)");
+            }
+        }while (opcionColor>=1 || opcionColor<=2);
+
+        return opcionColor;
+    }
 }
