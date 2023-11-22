@@ -8,7 +8,7 @@ import java.sql.SQLOutput;
 
 public class Consola {
 
-    public Consola(){
+    private Consola(){
 
     }
 
@@ -37,7 +37,7 @@ public class Consola {
         return opcionMenu;
     }
 
-    public static Color elegirColor(){
+    public static Color elegirOpcion(){
         int opcionColor=0;
 
         do {
