@@ -20,5 +20,7 @@ public void crearReyDefecto(){
     this.rey=new Rey();
 }
 
-
+public void crearReyColor(Color color){
+    this.rey=new Rey(color);
+}
 }
