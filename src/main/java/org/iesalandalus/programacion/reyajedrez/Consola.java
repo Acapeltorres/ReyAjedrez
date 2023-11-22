@@ -8,7 +8,7 @@ import java.sql.SQLOutput;
 
 public class Consola {
 
-    private Consola(){
+    public Consola(){
 
     }
 
