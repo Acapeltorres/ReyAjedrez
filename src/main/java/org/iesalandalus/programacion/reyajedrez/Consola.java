@@ -27,11 +27,7 @@ public class Consola {
 
         do{
             mostrarMenu();
-            if (opcionMenu<1 || opcionMenu>4){
-                opcionMenu= Entrada.entero();
-            }else{
-                System.out.println("Escoge una opcion entre 1 y 4");
-            }
+            opcionMenu= Entrada.entero();
         }while (opcionMenu<1 || opcionMenu>4);
 
         return opcionMenu;
@@ -46,7 +42,7 @@ public class Consola {
                     "\n 2.Negro");
             opcionColor=Entrada.entero();
 
-        }while (opcionColor>=1 || opcionColor<=2);
+        }while (opcionColor<1 || opcionColor>2);
 
         if (opcionColor==1){
             return Color.BLANCO;

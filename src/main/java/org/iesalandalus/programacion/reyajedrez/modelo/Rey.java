@@ -140,30 +140,33 @@ public class Rey {
                 throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
             }
         } else if (d.equals(Direccion.ENROQUE_CORTO)) {
-            if(totalMovimientos>0){
-                throw new OperationNotSupportedException("El rey ya se ha movido antes.");
-            }else{
+                 comprobarEnroque();
+
                 int numerocolumna= posicion.getColumna()+2;
                 setPosicion(new Posicion(posicion.getFila(), (char)numerocolumna));
-            }
+
         } else if (d.equals(Direccion.ENROQUE_LARGO)) {
-            Posicion blanco=new Posicion(1,'e');
-            if(totalMovimientos>0 ){
-                throw new OperationNotSupportedException("ERROR: El rey ya se ha movido antes.");
-            } else if (!this.posicion.equals(blanco)) {
-                throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
-            } else {
+                comprobarEnroque();
+
                 int numerocolumna= posicion.getColumna()-2;
                 setPosicion(new Posicion(posicion.getFila(), (char)numerocolumna));
 
-
-            }
         }
     }
 
 
+    private void comprobarEnroque() throws OperationNotSupportedException {
+        Posicion rb=new Posicion(1,'e');
+        Posicion rn=new Posicion(8,'e');
+        if (getColor().equals(Color.BLANCO) && !rb.equals(this.posicion)){
+            throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+        } else if (getColor().equals(Color.NEGRO) && !rn.equals(this.posicion)){
+            throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+        } else if (totalMovimientos>0) {
+            throw new OperationNotSupportedException("ERROR: El rey ya se ha movido antes.");
+        }
 
-
+    }
 
     @Override
     public String toString() {

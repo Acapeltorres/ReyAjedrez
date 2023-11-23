@@ -16,7 +16,7 @@ public class Posicion {
 
     }
 
-    //Construtor copia
+    //Construtor copia se le pasa objeto de su clase
     public Posicion(Posicion p) throws NullPointerException{
         if (p==null){
             throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
@@ -28,6 +28,7 @@ public class Posicion {
     // getters y setters
 
     public int getFila() {
+
         return fila;
     }
 
@@ -65,7 +66,7 @@ public class Posicion {
     }
 
     @Override
-    public int hashCode() {
+   public int hashCode() {
         return Objects.hash(fila, columna);
     }
 
