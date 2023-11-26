@@ -28,6 +28,7 @@ public class MainApp {
     private static void mover() throws OperationNotSupportedException{
 
 
+
         Direccion direccion= Consola.elegirDireccion();
       try {
           if (direccion.equals(Direccion.NORTE)){
@@ -67,7 +68,8 @@ public class MainApp {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NullPointerException{
+
 
         int opcion;
         boolean salir=true;

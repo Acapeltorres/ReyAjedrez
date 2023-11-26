@@ -46,6 +46,7 @@ public class Rey {
     }
 
     public Posicion getPosicion() {
+
         return posicion;
 
     }
@@ -73,6 +74,7 @@ public class Rey {
     }
 
     public void mover(Direccion d) throws OperationNotSupportedException{
+
 
         if(d==null){
             throw new NullPointerException("ERROR: La dirección no puede ser nula.");

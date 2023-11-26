@@ -25,10 +25,18 @@ public class Consola {
     public static int elegirOpcionMenu(){
         int opcionMenu=0;
 
-        do{
-            mostrarMenu();
-            opcionMenu= Entrada.entero();
-        }while (opcionMenu<1 || opcionMenu>4);
+
+
+            do{
+                mostrarMenu();
+                opcionMenu= Entrada.entero();
+              if (opcionMenu<1 || opcionMenu>4){
+                  System.out.println("Opcion no valida (Elije una opcion disponible)\n");
+              }
+            }while (opcionMenu<1 || opcionMenu>4);
+
+
+
 
         return opcionMenu;
     }
@@ -41,7 +49,9 @@ public class Consola {
                     "\n 1.Blanco" +
                     "\n 2.Negro");
             opcionColor=Entrada.entero();
-
+            if (opcionColor<1 || opcionColor>2){
+                System.out.println("Opcion no valida (Elije una opcion disponible)\n");
+            }
         }while (opcionColor<1 || opcionColor>2);
 
         if (opcionColor==1){
@@ -72,7 +82,9 @@ public class Consola {
         do {
             mostrarMenuDirecciones();
             opcionDireccion=Entrada.entero();
-
+            if (opcionDireccion<1 || opcionDireccion>9){
+                System.out.println("Opcion no valida (Elije una opcion disponible)\n");
+            }
         }while (opcionDireccion<1 || opcionDireccion>9);
 
         if (opcionDireccion==1){
